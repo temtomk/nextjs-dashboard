@@ -99,8 +99,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-    throw new Error('Failed to delete invoice');
-
     try {
         await sql`
             DELETE FROM invoices
@@ -113,7 +111,7 @@ export async function deleteInvoice(id: string) {
 
 }
 
-export async function authenticate(prevState: State, formData: FormData) {
+export async function authenticate(prevState: string | undefined, formData: FormData) {
     try {
         await signIn('credentials', formData);
     } catch (error) {
